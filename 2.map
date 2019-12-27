@@ -1,0 +1,28 @@
+RAM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+Accel_Zout_Normalized_Val                                         0169h        2
+Offset_X_Val                                                      016Bh        1
+Offset_Y_Val                                                      016Ch        1
+Offset_Z_Val                                                      016Dh        1
+Accel_XAngle                                                      016Eh        4
+Accel_YAngle                                                      0172h        4
+Accel_ZAngle                                                      0176h        4
+_seed                                                             017Ah        4
+_base_y                                                           017Eh        4
+_lcd_x                                                            0182h        1
+_lcd_y                                                            0183h        1
+_lcd_maxx                                                         0184h        1
+
+EEPROM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                          Register  Size
+--------------------------------------------------------------------------------
+Accel_Xout_Val                                                    R4,R5        2
+Accel_Yout_Val                                                    R6,R7        2
+Accel_Zout_Val                                                    R8,R9        2
+Accel_Xout_Normalized_Val                                         R10,R11      2
+Accel_Yout_Normalized_Val                                         R12,R13      2

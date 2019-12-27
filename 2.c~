@@ -1,0 +1,45 @@
+#include <mega16.h>
+#include <delay.h>
+#include <stdlib.h>
+
+#asm
+   .equ __lcd_port=0x1B ;PORTA
+#endasm
+#include <lcd.h>
+
+#asm
+   .equ __i2c_port=0x18 ;PORTB
+   .equ __sda_bit=1
+   .equ __scl_bit=0
+#endasm
+#include <i2c.h>
+#define EEPROM_BUS_ADDRESS_W  160
+#define EEPROM_BUS_ADDRESS_R  161
+
+#include "ADXL345.h" 
+
+
+
+void main(void)
+{
+    char str[10];
+
+    lcd_init(16);
+
+    lcd_gotoxy(0,0);lcd_putsf("  DMF313.ir");delay_ms(2000);lcd_clear();
+
+    ftoa(GetDeviceID(),0,str);lcd_puts(str);delay_ms(2000);lcd_clear();
+
+    ADXL345_Init();
+    
+    while(1)
+    { 
+        Get_Accel_Angles();
+        
+        delay_ms(200);lcd_clear();
+        
+        ftoa(Accel_XAngle,0,str);lcd_gotoxy(0,0);lcd_puts("X=");lcd_puts(str);
+        ftoa(Accel_YAngle,0,str);lcd_gotoxy(8,0);lcd_puts("Y=");lcd_puts(str);
+        ftoa(Accel_ZAngle,0,str);lcd_gotoxy(0,1);lcd_puts("Z=");lcd_puts(str);
+    }
+}
